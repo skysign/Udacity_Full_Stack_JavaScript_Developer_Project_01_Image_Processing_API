@@ -1,0 +1,2 @@
+# udacity_Full_Stack_JavaScript_Developer_Project_01_Image_Processing_API
+Udacity Full Stack JavaScript Developer Nanodegree Program, Project 01 Image Processing API
