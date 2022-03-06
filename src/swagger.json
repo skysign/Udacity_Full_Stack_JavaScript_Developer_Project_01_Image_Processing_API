@@ -1,0 +1,128 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Title",
+    "description": "Describe API descrition here",
+    "contact": {
+      "email": "skysign@gmail.com"
+    },
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/",
+      "description": "server"
+    }
+  ],
+  "paths": {
+    "/api/v1/images": {
+      "get": {
+        "summary": "Get image list",
+        "description": "Get image list as json",
+        "responses": {
+          "200": {
+            "description": "description 200 responses",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "response200": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "status":"ok","images":["photo-1574616272393-633f2f4a7574.jpg","photo-1646121304297-48f44a3e5255.jpg","photo-1646404094528-92f946613413.jpg"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/image?file={file}&width={width}&height={height}": {
+      "get": {
+        "summary": "Get resized image ",
+        "description": "Get resized image as we requested its size to width,height",
+        "parameters": [
+          {
+            "name": "file",
+            "in": "file",
+            "description": "file name, should be one of response in /api/v1/images",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "width",
+            "in": "width",
+            "description": "image width",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "height",
+            "in": "height",
+            "description": "image height",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "description 200 responses",
+            "content": {
+              "application/image": {
+
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/image": {
+              }
+            }
+          }
+        }
+      }
+    },    
+    "/api/v1/myapi": {
+      "post": {
+        "summary": "Describe summary post/myapi",
+        "description": "description post/myapi",
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "description 200 responses",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "response200": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }              
+            }
+          }
+        }
+      }      
+    }
+  }
+}
